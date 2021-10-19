@@ -8,20 +8,37 @@
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <form class="space-y-6" action="#" method="POST">
+      <%= form_with url: tasks_path, class: "space-y-6" do |form| %>
         <div>
-          <label for="task" class="block text-sm font-medium text-gray-700">Task Phrase</label>
+          <%= form.label :phrase, "Task Phrase", class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
-            <input id="task" name="task" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <%= form.text_field :phrase, autofocus: true, required: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
           </div>
         </div>
 
         <div>
-          <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Analyze
-          </button>
+          <%= form.submit "Analyze", disable_with: "Analyzing...", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
         </div>
-      </form>
+      <% end %>
+
+      <% if @results %>
+        <div class="mt-6">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-gray-500">
+                Results
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <span class="text-sm text-gray-800"><%= @results %></span>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
