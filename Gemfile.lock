@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/jwright/task_sentiment
-  revision: 783022701313325794b27d7bc60678be8d03a732
+  revision: 6985e8551f5ebaa33955bf9c2ea7b3f4b5feca96
   branch: main
   specs:
-    task_sentiment (0.0.1)
+    task_sentiment (0.0.2)
       ruby-openai (~> 1.3.1)
 
 GEM
